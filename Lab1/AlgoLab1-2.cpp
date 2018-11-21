@@ -27,7 +27,7 @@ public:
 int main()
 {
 	int const SliceNum = 10;
-    int RoomNum = 0;
+    int RoomNum = 1;
     int TimeNow;
 	Slice slice_array[SliceNum];
 
@@ -57,7 +57,7 @@ int main()
 	priority_queue <int, vector<int>, cmp  > TimeQueue;
 	TimeQueue.push(slice_array[0].end);
 	
-	for (int i = 0; i < SliceNum; i++)
+	for (int i = 1; i < SliceNum; i++)
 	{
 		TimeNow = TimeQueue.top();
 		
@@ -65,9 +65,11 @@ int main()
 		{
 			TimeQueue.pop();
 			TimeQueue.push(slice_array[i].end);
+			std::cout<<"0 "<<slice_array[i].begin<<" "<<slice_array[i].end<<endl;
 		}else{ 
 			RoomNum++;
 			TimeQueue.push(slice_array[i].end);
+			std::cout<<"1 "<<slice_array[i].begin<<" "<<slice_array[i].end<<endl;
 		}
 		//cout<<TimeNow<<" ";
 		//cout<<RoomNum<<endl;
